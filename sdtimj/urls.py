@@ -17,6 +17,9 @@ from django.conf.urls import url
 from django.contrib import admin
 import xadmin
 
+from devices.views import DeviceOperation
+
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
+    url(r'^op', DeviceOperation),
 ]
