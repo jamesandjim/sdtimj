@@ -34,7 +34,7 @@ class WGPacketShort():
 
         s.sendto(buff)
 
-        
+
 
 
 
