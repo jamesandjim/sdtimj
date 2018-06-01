@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+    <form action="/open/" method="post">
+        <label>
+            <span>&nbsp;</span>
+            <input type="submit" class="button" value="提交"/>
+        </label>
+    {% csrf_token %}
+    </form>
+</body>
+</html>

@@ -17,9 +17,10 @@ from django.conf.urls import url
 from django.contrib import admin
 import xadmin
 
-from devices.views import DeviceOperation
+from devices.views import index, open_door
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
-    url(r'^op', DeviceOperation),
+    url(r'^index', index),
+    url(r'^open', open_door),
 ]

@@ -11,52 +11,54 @@ from socket import *
 #4、接收服务器发送回的数据包
 #5、对接收到的数据包进行解析
 
-class WGPacketShort():
+#定义软件使用的固定的常量
+Type = 0x17
+ControllerPort = 60000
+SpecialFlag = 0x55AAAA55
+WGPacketSize = 64
 
-    global WGPacketSize, Type, ControllerPort, SpecialFlag, functionID, buff, iDevSn, data, ADDR #1、定义需发送的数据包的内容
-    WGPacketSize = 64
-    Type = 0x17
-    ControllerPort = 60000
-    SpecialFlag = 0x55AAAA55
-    functionID = 0xff
-    buff = []
-    iDevSn = 0
-    data = [56]
-    HOST = '192.168.0.100'
-    PORT = 60000
-    ADDR = (HOST, PORT)
+# 定义UDP数据包
+udp_data = bytearray(WGPacketSize)
+udp_data[0] = 0x17
 
-    def to_byte(self, str, buflen):                                                         #2、对需发送的内容进行格式化
-        if buflen == WGPacketSize:
-            buff[0] = Type
-            buff[1] = functionID
-            buff[4:8] = iDevSn
-            buff[8:65] = data
 
-            return buff
+def send_data(udp_data, ADDR):
+    udp_cli_socket = socket(AF_INET, SOCK_DGRAM)
 
-    def run(self, buff, ADDR):                                                                #3、基于UDP协议发送数据包
-        udp_cli_socket = socket(AF_INET, SOCK_DGRAM)
+    try:
+        udp_cli_socket.sendto(udp_data, ADDR)
+        rec_data, ADDR = udp_cli_socket.recvfrom(64)
 
-        while True:
-            try:
-                udp_cli_socket.sendto(buff, ADDR)
-                data, ADDR = udp_cli_socket.recvfrom(64)
+        if len(rec_data) == WGPacketSize:
+            if (int(bytearray(rec_data[0])) == udp_data[0] and int(bytearray(rec_data[1])) == udp_data[1]):
+                x = 'ok'
+                return x
+            else:
+                x = 't'
+                return x
+        else:
+            x = 'no'
+            return x
 
-                if not data:
-                    break
-                if len(data) == WGPacketSize:
-                    if data[0] == Type and data[1] == functionID:
-                        return data
+    except Exception, e:
+        pass
 
-            except Exception,  e:
-                pass
 
-        udp_cli_socket.close()
+    udp_cli_socket.close()
+
+
+
+
+
+
+
+
+
+
 
 
 #对收到的数据进行解析
-   
+
 
 
 
