@@ -41,7 +41,7 @@ def send_data(udp_data, ADDR):
             return x
 
     except Exception, e:
-        pass
+        print e.message
 
 
     udp_cli_socket.close()

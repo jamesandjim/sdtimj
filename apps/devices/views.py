@@ -27,7 +27,7 @@ def open_door(request):
     return HttpResponse(rec_data)
 
 def index(request):
-    return render(request, 'deviceOP.html')
+    return render(request, 'form_layouts.html')
 
 
 
