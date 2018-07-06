@@ -47,8 +47,9 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'formtools',
-    'devices',
+    'comminfo',
     'cardcenter',
+    'devicecenter',
 ]
 
 AUTH_USER_MODEL = 'users.UserProfile'

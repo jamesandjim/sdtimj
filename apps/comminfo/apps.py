@@ -4,6 +4,6 @@ from __future__ import unicode_literals
 from django.apps import AppConfig
 
 
-class UsersConfig(AppConfig):
-    name = 'users'
-    verbose_name = u'操作员管理'
+class ComminfoConfig(AppConfig):
+    name = 'comminfo'
+    verbose_name = u'公用信息管理'
