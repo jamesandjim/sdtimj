@@ -8,7 +8,7 @@
 
 import xadmin
 
-from .models import Organization, Personnel
+from .models import Organization, Personnel, Card_for_personnel
 
 
 class OrganizationAdmin(object):
@@ -18,10 +18,17 @@ class OrganizationAdmin(object):
 
 
 class PersonnelAdmin(object):
-    list_display = ['name', 'gender', 'organization']
-    list_filter = ['name', 'gender']
-    search_fields = ['name', 'gender']
+    list_display = ['name', 'nation', 'gender', 'organization', 'phone', 'address', 'ID_Card_NO']
+    list_filter = ['name', 'nation', 'gender', 'organization', 'phone', 'address', 'ID_Card_NO']
+    search_fields = ['name', 'nation', 'gender', 'organization', 'phone', 'address', 'ID_Card_NO']
+
+
+class Card_for_personnelAdmin(object):
+    list_display = ['personnel', 'card_no']
+    list_filter = ['personnel', 'card_no']
+    search_fields = ['personnel', 'card_no']
 
 
 xadmin.site.register(Organization, OrganizationAdmin)
 xadmin.site.register(Personnel, PersonnelAdmin)
+xadmin.site.register(Card_for_personnel, Card_for_personnelAdmin)
