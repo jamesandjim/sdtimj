@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'formtools',
     'devices',
+    'cardcenter',
 ]
 
 AUTH_USER_MODEL = 'users.UserProfile'
