@@ -10,14 +10,14 @@
 
   <title>Form Layouts</title>
 
-  <link href="{% static "css/style.css" rel="stylesheet" %}">
-  <link href="{% static "css/style-responsive.css" rel="stylesheet" %}">
+  <link href="{% static "css/style.css rel='stylesheet'" %}">
+  <link href="{% static "css/style-responsive.css rel='stylesheet'" %}">
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
-  <script src="{% static " js/html5shiv.js " %}"></script>
+  <script src=" {% static "js/html5shiv.js" %} "></script>
   
-  <script src="{% static " js/respond.min.js "%}"></script>
+  <script src=" {% static "js/respond.min.js" %} "></script>
   <![endif]-->
 </head>
 
@@ -29,11 +29,11 @@
 
         <!--logo and iconic logo start-->
         <div class="logo">
-            <a href="index.html"><img src="{% static "images/logo.png" %}"></a>
+            <a href="index.html"><img src=" {% static "images/logo.png" %} "></a>
         </div>
 
         <div class="logo-icon text-center">
-            <a href="index.html"><img src="{% static "images/logo_icon.png" %}"></a>
+            <a href="index.html"><img src=" {% static "images/logo_icon.png" %} "></a>
         </div>
         <!--logo and iconic logo end-->
 
@@ -43,7 +43,7 @@
             <!-- visible to small devices only -->
             <div class="visible-xs hidden-sm hidden-md hidden-lg">
                 <div class="media logged-user">
-                    <img alt="" src="{% static "images/photos/user-avatar.png" class="media-object">
+                    <img alt="" src=" {% static "images/photos/user-avatar.png class='media-object'" %} ">
                     <div class="media-body">
                         <h4><a href="#">John Doe</a></h4>
                         <span>"Hello There..."</span>
@@ -268,7 +268,7 @@
                         <ul class="dropdown-list normal-list">
                             <li class="new">
                                 <a href="">
-                                    <span class="thumb"><img src="{% static "images/photos/user1.png" %}"></span>
+                                    <span class="thumb"><img src=" {% static "images/photos/user1.png" %} "></span>
                                         <span class="desc">
                                           <span class="name">John Doe <span class="badge badge-success">new</span></span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -277,7 +277,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <span class="thumb"><img src="{% static "images/photos/user2.png" %}"></span>
+                                    <span class="thumb"><img src=" {% static "images/photos/user2.png" %} "></span>
                                         <span class="desc">
                                           <span class="name">Jonathan Smith</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -286,7 +286,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <span class="thumb"><img src="{% static "images/photos/user3.png" %}"></span>
+                                    <span class="thumb"><img src=" {% static "images/photos/user3.png" %} "></span>
                                         <span class="desc">
                                           <span class="name">Jane Doe</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -295,7 +295,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <span class="thumb"><img src="{% static "images/photos/user4.png" %}"></span>
+                                    <span class="thumb"><img src=" {% static "images/photos/user4.png" %} "></span>
                                         <span class="desc">
                                           <span class="name">Mark Henry</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -304,7 +304,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <span class="thumb"><img src="{% static "images/photos/user5.png" %}"></span>
+                                    <span class="thumb"><img src=" {% static "images/photos/user5.png" %} "></span>
                                         <span class="desc">
                                           <span class="name">Jim Doe</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -1257,15 +1257,15 @@
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/modernizr.min.js"></script>
-<script src="js/jquery.nicescroll.js"></script>
+<script src=" {% static "js/jquery-1.10.2.min.js" %} "></script>
+<script src=" {% static "js/jquery-ui-1.9.2.custom.min.js" %} "></script>
+<script src=" {% static "js/jquery-migrate-1.2.1.min.js" %} "></script>
+<script src=" {% static "js/bootstrap.min.js" %} "></script>
+<script src=" {% static "js/modernizr.min.js" %} "></script>
+<script src=" {% static "js/jquery.nicescroll.js" %} "></script>
 
 <!--common scripts for all pages-->
-<script src="js/scripts.js"></script>
+<script src=" {% static "js/scripts.js" %} "></script>
 
 </body>
 </html>

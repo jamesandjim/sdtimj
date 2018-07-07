@@ -22,7 +22,7 @@ class Organization(models.Model):
 #用户信息
 class Personnel(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False, verbose_name=u'人员名称')
-    nation = models.ForeignKey(Nation, default=1)
+    nation = models.ForeignKey(Nation, default=1, verbose_name=u'民族')
     gender = models.CharField(max_length=6, choices=(('male',u'男'), ('femal',u'女')), verbose_name=u'性别')
     phone = models.CharField(max_length=11, verbose_name=u'电话号码', default='')
     address = models.CharField(max_length=100, verbose_name=u'住址', default='')

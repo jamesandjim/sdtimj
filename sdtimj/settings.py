@@ -44,10 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'comminfo',
     'xadmin',
     'crispy_forms',
     'formtools',
-    'comminfo',
     'cardcenter',
     'devicecenter',
 ]
