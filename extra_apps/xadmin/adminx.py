@@ -5,14 +5,13 @@ from xadmin.layout import *
 
 from django.utils.translation import ugettext_lazy as _, ugettext
 
+
 class UserSettingsAdmin(object):
     model_icon = 'fa fa-cog'
     hidden_menu = True
 
-xadmin.site.register(UserSettings, UserSettingsAdmin)
 
 class LogAdmin(object):
-
     def link(self, instance):
         if instance.content_type and instance.object_id and instance.action_flag != 'delete':
             admin_url = self.get_admin_url('%s_%s_change' % (instance.content_type.app_label, instance.content_type.model), 
@@ -29,4 +28,6 @@ class LogAdmin(object):
     search_fields = ['ip_addr', 'message']
     model_icon = 'fa fa-cog'
 
+
+xadmin.site.register(UserSettings, UserSettingsAdmin)
 xadmin.site.register(Log, LogAdmin)

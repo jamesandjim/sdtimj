@@ -12,39 +12,70 @@ from socket import *
 #5、对接收到的数据包进行解析
 
 #定义软件使用的固定的常量
-Type = 0x17
-ControllerPort = 60000
-SpecialFlag = 0x55AAAA55
-WGPacketSize = 64
 
-# 定义UDP数据包
-udp_data = bytearray(WGPacketSize)
-udp_data[0] = 0x17
+#定义短报文包的类
+class WGPaketShort():
+    Type = 0x17
+    ControllerPort = 60000
+    SpecialFlag = 0x55AAAA55
+    WGPacketSize = 64
+    data = [0 for i in range(64)]
+
+    def send_data(self):
+        udp_cli_socket = socket(AF_INET, SOCK_DGRAM)
+
+        # 定义UDP数据包
+        global WGPacketSize
+        global Type
+        global ControllerPort
+        global data
+        global SpecialFlag
 
 
-def send_data(udp_data, ADDR):
-    udp_cli_socket = socket(AF_INET, SOCK_DGRAM)
 
-    try:
-        udp_cli_socket.sendto(udp_data, ADDR)
-        rec_data, ADDR = udp_cli_socket.recvfrom(64)
+        udp_data = bytearray(64)
+        udp_data[0] = 0x17
+        udp_data[1] = 0x40
+        udp_data[4] = 0x93
+        udp_data[5] = 0x6B
+        udp_data[6] = 0x59
+        udp_data[7] = 0x07
+        udp_data[8] = 0x01
 
-        if len(rec_data) == WGPacketSize:
-            if (int(bytearray(rec_data[0])) == udp_data[0] and int(bytearray(rec_data[1])) == udp_data[1]):
-                x = 'ok'
-                return x
+        ADDR = ('192.168.0.99', 60000)
+
+
+
+        try:
+            udp_cli_socket.sendto(udp_data, ADDR)
+            rec_data, ADDR = udp_cli_socket.recvfrom(64)
+
+            global WGPacketSize
+
+            if len(rec_data) == WGPacketSize:
+                if (int(bytearray(rec_data[0])) == udp_data[0] and int(bytearray(rec_data[1])) == udp_data[1]):
+                    x = 'ok'
+                    return x
+                else:
+                    x = 't'
+                    return x
             else:
-                x = 't'
+                x = 'no'
                 return x
-        else:
-            x = 'no'
-            return x
 
-    except Exception, e:
-        print e.message
+        except Exception, e:
+            print e.message
+
+        udp_cli_socket.close()
 
 
-    udp_cli_socket.close()
+
+
+
+
+
+
+
 
 
 

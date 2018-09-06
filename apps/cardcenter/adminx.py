@@ -21,6 +21,12 @@ class PersonnelAdmin(object):
     list_display = ['name', 'nation', 'gender', 'organization', 'phone', 'address', 'ID_Card_NO']
     list_filter = ['name', 'nation', 'gender', 'organization', 'phone', 'address', 'ID_Card_NO']
     search_fields = ['name', 'nation', 'gender', 'organization', 'phone', 'address', 'ID_Card_NO']
+    #list_editable = ['name', 'nation']
+    #refresh_times = (3, 5)
+
+    # data_charts = {
+    #     u'图形分布' : {'title': u'占比表', 'x-field': 'name', 'y-field': 'phone'}
+    # }
 
 
 class Card_for_personnelAdmin(object):
