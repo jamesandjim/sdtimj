@@ -5,55 +5,58 @@
 # @Site    : 
 # @File    : mj_communication.py
 # @Software: PyCharm
+
 from socket import *
+import struct
+import binascii
 
 #数据报及其操作方法
 #4、接收服务器发送回的数据包
 #5、对接收到的数据包进行解析
 
-#定义软件使用的固定的常量
+
+
 
 #定义短报文包的类
-class WGPaketShort():
+class WGPaketShort:
+    '短报文类，实现发送短报文和收到返回短报文的功能'
+
+    # 定义全局类变量
     Type = 0x17
     ControllerPort = 60000
     SpecialFlag = 0x55AAAA55
     WGPacketSize = 64
-    data = [0 for i in range(64)]
+    #data = [0 for i in range(WGPacketSize)]
 
+    def __init__(self, ip, dev_sn, func_ID):
+        self.ip = ip
+        self.dev_sn = dev_sn
+        self.func_ID = func_ID
+
+    #发送短报文功能
     def send_data(self):
+        values = (WGPaketShort.Type, self.func_ID, 0, self.dev_sn, self.door_id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        s = struct.Struct('<BBHIIIIIIIIIIIIIII')
+        packed_data = s.pack(*values)
+        #unpacked_data = s.unpack(packed_data)
+        print s.size
+        print packed_data
+
+
         udp_cli_socket = socket(AF_INET, SOCK_DGRAM)
 
         # 定义UDP数据包
-        global WGPacketSize
-        global Type
-        global ControllerPort
-        global data
-        global SpecialFlag
 
-
-
-        udp_data = bytearray(64)
-        udp_data[0] = 0x17
-        udp_data[1] = 0x40
-        udp_data[4] = 0x93
-        udp_data[5] = 0x6B
-        udp_data[6] = 0x59
-        udp_data[7] = 0x07
-        udp_data[8] = 0x01
-
-        ADDR = ('192.168.0.99', 60000)
-
-
+        ip = '192.168.0.99'
+        ADDR = (ip, WGPaketShort.ControllerPort)
 
         try:
-            udp_cli_socket.sendto(udp_data, ADDR)
-            rec_data, ADDR = udp_cli_socket.recvfrom(64)
+            udp_cli_socket.sendto(packed_data, ADDR)
+            rec_data, ADDR = udp_cli_socket.recvfrom(WGPaketShort.WGPacketSize)
+            rec = s.unpack(rec_data)
 
-            global WGPacketSize
-
-            if len(rec_data) == WGPacketSize:
-                if (int(bytearray(rec_data[0])) == udp_data[0] and int(bytearray(rec_data[1])) == udp_data[1]):
+            if len(rec_data) == WGPaketShort.WGPacketSize:
+                if rec[0] == values[0] and rec[1] == values[1]:
                     x = 'ok'
                     return x
                 else:
@@ -68,27 +71,9 @@ class WGPaketShort():
 
         udp_cli_socket.close()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#对收到的数据进行解析
+    #接收短报文功能
+    def receive_data(self):
+        pass
 
 
 
